@@ -40,9 +40,17 @@ class Line(object):
       for y in range(min_y, max_y + 1):
         yield Point(self.point_one.x, y)
     else:
-      raise Exception(
-        'Anyhow: Iterating points of lines that are not '
-        'horizontal or vertical is not supported - yet.')
+      # Must be diagonal otherwise according to the requirements.
+      x_step = 1 if self.point_one.x < self.point_two.x else -1
+      y_step = 1 if self.point_one.y < self.point_two.y else -1
+      x = self.point_one.x
+      y = self.point_one.y
+      while True:
+        yield Point(x, y)
+        if x == self.point_two.x:
+          break
+        x += x_step
+        y += y_step
 
 
 def ParsePointStr(point_str):
@@ -71,12 +79,23 @@ def SolvePartOne():
     for point in line.GetPoints():
       points_covered_counter[point] += 1
   dangerous_points_count = sum([1 if value >= 2 else 0 for value in points_covered_counter.values()])
-  print(f'dangerous points count (overlap of two or more) = {dangerous_points_count}')
+  print(f'Part 1: dangerous points count (overlap of two or more) = {dangerous_points_count}')
+
+
+def SolvePartTwo():
+  lines = ParseLines()
+  points_covered_counter = defaultdict(lambda: 0)
+  for line in lines:
+    for point in line.GetPoints():
+      points_covered_counter[point] += 1
+  dangerous_points_count = sum([1 if value >= 2 else 0 for value in points_covered_counter.values()])
+  print(f'Part 2: dangerous points count (overlap of two or more) = {dangerous_points_count}')
 
 
 def Main():
   print('Hello Day 5!')
   SolvePartOne()
+  SolvePartTwo()
 
 
 if __name__ == '__main__':
