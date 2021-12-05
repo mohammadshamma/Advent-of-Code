@@ -59,15 +59,15 @@ def ParsePointStr(point_str):
   return Point(int(coordinates[0]), int(coordinates[1]))
 
 
-def ParseLine(line):
-  points_str = line.split('->')
+def ParseLineStr(line_str):
+  points_str = line_str.split('->')
   assert(len(points_str) == 2)
   return Line(ParsePointStr(points_str[0]), ParsePointStr(points_str[1]))
 
 
 def ParseLines():
   with open('input.txt') as f:
-    return [ParseLine(line) for line in f.readlines()]
+    return [ParseLineStr(line) for line in f.readlines()]
 
 
 def SolvePartOne():
