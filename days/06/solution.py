@@ -1,7 +1,5 @@
 #!/usr/bin/env python3 
 
-from collections import defaultdict
-
 
 class RingIntegerList():
   def __init__(self, size):
@@ -59,7 +57,14 @@ def SolvePartTwo():
 
 def BigBoy():
   fish_count = CalculateFishCountAfterNDays(9999999, [3,4,3,1,2])
-  print(f'Number of fish after 256 days: {fish_count}')
+  assert(str(fish_count).startswith('4182599183'))
+  assert(str(fish_count).endswith('6707352532'))
+  print(f'Number of fish after 9999999 days: {str(fish_count)[:10]}...{str(fish_count)[-10:]}')
+
+  fish_count = CalculateFishCountAfterNDays(67108864, [3,4,3,1,2])
+  assert(str(fish_count).startswith('3060363545'))
+  assert(str(fish_count).endswith('5483141435'))
+  print(f'Number of fish after 67108864 days: {str(fish_count)[:10]}...{str(fish_count)[-10:]}')
 
 
 def Main():
