@@ -124,14 +124,14 @@ class SignalToSegmentMappingConstraintManager(object):
               updated_constraints_matrix = True
 
       for segment_index in range(SEGMENT_COUNT):
-        # Check row for six rejections and an open slot, and fill in conclusion.
+        # Check column for six rejections and an open slot, and fill in conclusion.
         rejection_count = sum([1 if self.signal_constraints[i][segment_index] == 'x' else 0 for i in range(SEGMENT_COUNT)])
         has_open_slot = '?' in [self.signal_constraints[i][segment_index] for i in range(SEGMENT_COUNT)]
         if rejection_count == 6 and has_open_slot:
           open_slot_index = [self.signal_constraints[i][segment_index] for i in range(SEGMENT_COUNT)].index('?')
           self.signal_constraints[open_slot_index][segment_index] = 'o'
           updated_constraints_matrix = True
-        # Check row for conclusion and reject open slots.
+        # Check column for conclusion and reject open slots.
         has_conclusion = 'o' in [self.signal_constraints[i][segment_index] for i in range(SEGMENT_COUNT)]
         has_open_slot = '?' in [self.signal_constraints[i][segment_index] for i in range(SEGMENT_COUNT)]
         if has_conclusion and has_open_slot:
