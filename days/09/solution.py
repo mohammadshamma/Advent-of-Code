@@ -69,11 +69,13 @@ def Test():
 def SolvePartOne():
   sum_of_risk_levels = CalculateLowPointsRiskLevels('height_map.txt')
   print(f'Sum of risk levels = {sum_of_risk_levels}')
+  assert(sum_of_risk_levels == 504)
 
 
 def SolvePartTwo():
   p = CalculateProductOfTopThreeBasinsSizes('height_map.txt')
   print(f'Product of size of top three basins: {p}')
+  assert(p == 1558722)
 
 
 def Main():
