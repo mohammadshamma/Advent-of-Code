@@ -219,6 +219,18 @@ def CalculateAllDisplaysValue(signal_to_segment_map, displays_segments):
   return value
 
 
+def Solve(input_path):
+  observed_entries = GetObservedEntries(input_path)
+  sum_of_all_display_values = 0
+  for observed_entry in observed_entries:
+    observed_combinations = observed_entry[0]
+    displays_segments = observed_entry[1]
+    signal_to_segment_map = GetSignalToSegmentMap(observed_combinations)
+    display_value = CalculateAllDisplaysValue(signal_to_segment_map, displays_segments)
+    sum_of_all_display_values += display_value
+  return sum_of_all_display_values
+
+
 def TestConstraintExtraction():
   _ = GetConstraints(['acedgfb', 'cdfbe', 'gcdfa', 'fbcad', 'dab', 'cefabd', 'cdfgeb', 'eafb', 'cagedb', 'ab'])
 
@@ -263,15 +275,15 @@ def SolvePart1():
 
 
 def SolvePart2():
-  observed_entries = GetObservedEntries('input.txt')
-  sum_of_all_display_values = 0
-  for observed_entry in observed_entries:
-    observed_combinations = observed_entry[0]
-    displays_segments = observed_entry[1]
-    signal_to_segment_map = GetSignalToSegmentMap(observed_combinations)
-    display_value = CalculateAllDisplaysValue(signal_to_segment_map, displays_segments)
-    sum_of_all_display_values += display_value
-  print(f'sum of all display values = {sum_of_all_display_values}')
+  sum_of_displays = Solve('input.txt')
+  assert(sum_of_displays == 990964)
+  print(f'Sum of all displays = {sum_of_displays}')
+
+
+# def BigBoy():
+#   sum_of_displays = Solve('8-100000.in')
+#   assert(sum_of_displays == 498570828)
+#   print(f'Sum of all displays = {sum_of_displays}')
 
 
 def Main():
@@ -279,6 +291,8 @@ def Main():
   Test()
   SolvePart1()
   SolvePart2()
+  # To run the BigBoys(), download the big input from: https://the-tk.com/files/aoc2021-bigboys/8-100000.in.xz
+  # BigBoy()
 
 
 if __name__ == '__main__':
