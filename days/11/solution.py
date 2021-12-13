@@ -70,7 +70,7 @@ def SolvePartTwo():
 
 
 def Main():
-  print('Hello Day 10!')
+  print('Hello Day 11!')
   Test()
   SolvePartOne()
   SolvePartTwo()

@@ -112,7 +112,7 @@ def SolvePartTwo():
 
 
 def Main():
-  print('Hello Day 10!')
+  print('Hello Day 12!')
   Test()
   SolvePartOne()
   SolvePartTwo()
