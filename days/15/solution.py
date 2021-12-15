@@ -24,28 +24,28 @@ def GetPointNeighbours(point, shape):
 
 
 def GetShortestPathRiskLevel(array):
-	visited = set()
-	parentsMap = {}
-	pq = []
-	nodeCosts = defaultdict(lambda: float('inf'))
-	nodeCosts[(0, 0)] = 0
-	heap.heappush(pq, (0, (0, 0)))
+  visited = set()
+  parentsMap = {}
+  pq = []
+  nodeCosts = defaultdict(lambda: float('inf'))
+  nodeCosts[(0, 0)] = 0
+  heap.heappush(pq, (0, (0, 0)))
  
-	while pq:
-		# go greedily by always extending the shorter cost nodes first
-		_, node = heap.heappop(pq)
-		visited.add(node)
+  while pq:
+    # go greedily by always extending the shorter cost nodes first
+    _, node = heap.heappop(pq)
+    visited.add(node)
  
-		for adjNode, weight in [(adjacent_node, array[adjacent_node]) for adjacent_node in GetPointNeighbours(node, array.shape)]:
-			if adjNode in visited:	continue
-				
-			newCost = nodeCosts[node] + weight
-			if nodeCosts[adjNode] > newCost:
-				parentsMap[adjNode] = node
-				nodeCosts[adjNode] = newCost
-				heap.heappush(pq, (newCost, adjNode))
+    for adjNode, weight in [(adjacent_node, array[adjacent_node]) for adjacent_node in GetPointNeighbours(node, array.shape)]:
+      if adjNode in visited:	continue
         
-	return nodeCosts[array.shape[0] - 1, array.shape[1] - 1]
+      newCost = nodeCosts[node] + weight
+      if nodeCosts[adjNode] > newCost:
+        parentsMap[adjNode] = node
+        nodeCosts[adjNode] = newCost
+        heap.heappush(pq, (newCost, adjNode))
+        
+  return nodeCosts[array.shape[0] - 1, array.shape[1] - 1]
 
 
 def GetNextArray(array):
