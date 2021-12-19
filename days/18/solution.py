@@ -121,17 +121,34 @@ def UnparseSnailFishNumber(numbr_list):
   return ''.join([str(element) if type(element) is not str else element for element in numbr_list])
 
 
+def FindHighestMagnitudeOfAnyTwoNumbers(list_of_numbr_strs):
+  numbr_list = [ParseSnailFishNumber(numbr_str) for numbr_str in list_of_numbr_strs]
+  highest_magnitude = 0
+  for i in range(len(numbr_list)):
+    for j in range(len(numbr_list)):
+      if i == j:
+        continue
+      magnitude = CalculateMagnitudeForStr(UnparseSnailFishNumber(AddSnailFishNumbers(numbr_list[i], numbr_list[j])))
+      if magnitude > highest_magnitude:
+        highest_magnitude = magnitude
+  return highest_magnitude
+
+
 def Test():
   assert(CalculateMagnitudeForStr(AddManySnailFishNumbers(ReadSnailFishNumberStrings('slightly_larger_example.txt'))) == 4140)
+  assert(FindHighestMagnitudeOfAnyTwoNumbers(ReadSnailFishNumberStrings('slightly_larger_example.txt')) == 3993)
 
 
 def SolvePartOne():
   sum_magnitude = CalculateMagnitudeForStr(AddManySnailFishNumbers(ReadSnailFishNumberStrings('input.txt')))
   print(f'Part 1: Sum magnitude = {sum_magnitude}')
+  assert(sum_magnitude == 2501)
 
 
 def SolvePartTwo():
-  pass
+  highest_magnitude = FindHighestMagnitudeOfAnyTwoNumbers(ReadSnailFishNumberStrings('input.txt'))
+  print(f'Part 2: Highest magnitude of any two input numbers = {highest_magnitude}')
+  assert(highest_magnitude == 4935)
 
 
 def Main():
