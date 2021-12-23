@@ -130,26 +130,16 @@ class ReactorV2(object):
     self.ones_cuboids = []
 
   def Set(self, value, cuboid):
+    assert(value == 0 or value == 1)
+    new_ones_cuboids = []
     if value == 1:
-      new_ones_cuboids = [cuboid]
-      for ones_cuboid in self.ones_cuboids:
-        if cuboid.Contains(ones_cuboid):
-          pass
-        elif cuboid.DoesIntersect(ones_cuboid):
-          new_ones_cuboids.extend(ones_cuboid - cuboid)
-        else:
-          new_ones_cuboids.append(ones_cuboid)
-      self.ones_cuboids = new_ones_cuboids
-    elif value == 0:
-      new_ones_cuboids = []
-      for ones_cuboid in self.ones_cuboids:
-        if ones_cuboid.DoesIntersect(cuboid):
-          new_ones_cuboids.extend(ones_cuboid - cuboid)
-        else:
-          new_ones_cuboids.append(ones_cuboid)
-      self.ones_cuboids = new_ones_cuboids
-    else:
-      raise Exception(f'Anyhow, value {value} was not expected.')
+      new_ones_cuboids = [cuboid]  
+    for ones_cuboid in self.ones_cuboids:
+      if cuboid.DoesIntersect(ones_cuboid):
+        new_ones_cuboids.extend(ones_cuboid - cuboid)
+      else:
+        new_ones_cuboids.append(ones_cuboid)
+    self.ones_cuboids = new_ones_cuboids
   
   def GetTurnedOnCubesCount(self):
     return sum([c.GetSize() for c in self.ones_cuboids])
