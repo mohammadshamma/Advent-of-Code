@@ -61,13 +61,6 @@ class Cuboid(object):
   def __init__(self, range):
     self.range = range
 
-  def Contains(self, other):
-    if (self.range[0][0] <= other.range[0][0] and self.range[0][1] >= other.range[0][1]
-     and self.range[1][0] <= other.range[1][0] and self.range[1][1] >= other.range[1][1]
-     and self.range[2][0] <= other.range[2][0] and self.range[2][1] >= other.range[2][1]):
-      return True
-    return False
-
   def DoesIntersect(self, other):
     if (self.range[0][0] > other.range[0][1] or self.range[0][1] < other.range[0][0]
      or self.range[1][0] > other.range[1][1] or self.range[1][1] < other.range[1][0]
