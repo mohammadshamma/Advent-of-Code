@@ -8,5 +8,5 @@ You can find the puzzles here: https://adventofcode.com/2022
 
 Please send a Pull Request and append yourself to the list below:
 
-* First friend
-* ...
+<!-- Please use the format [First and Last Names](http://gitgit/advent-of-code-repo.html) -->
+* Append your repository here 
