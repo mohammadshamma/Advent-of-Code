@@ -24,8 +24,8 @@ fun parseRangePair(rangePair: String): Pair<Range, Range> {
 }
 
 fun part1() {
-  readInput("day_04/input_1.txt").lines().map { line ->
-    val (firstRange, secondRange) = parseRangePair(line)
+  readInput("day_04/input_1.txt").lines().map {
+    val (firstRange, secondRange) = parseRangePair(it)
     firstRange.includesRange(secondRange)|| secondRange.includesRange(firstRange)
   }.count { it }.let {
     println("Part 1: The number of range pairs that include each other is $it")
@@ -34,8 +34,8 @@ fun part1() {
 }
 
 fun part2() {
-  readInput("day_04/input_1.txt").lines().map { line ->
-    val (firstRange, secondRange) = parseRangePair(line)
+  readInput("day_04/input_1.txt").lines().map {
+    val (firstRange, secondRange) = parseRangePair(it)
     firstRange.overlapsRange(secondRange)
   }.count { it }.let {
     println("Part 2: The number of range pairs that overlap each other is $it")
