@@ -29,16 +29,16 @@ enum class RoundResult {
 fun calculateHeadToHeadPoints(theirMove: TheirMove, myMove: MyMove): Int {
   val myMove = myMove.move
   val theirMove = theirMove.move
-  if (myMove == theirMove) {
-    return 3
+  return if (myMove == theirMove) {
+    3
   } else if (myMove == Move.Rock && theirMove == Move.Scissors) {
-    return 6
+    6
   } else if (myMove == Move.Paper && theirMove == Move.Rock) {
-    return 6
+    6
   } else if (myMove == Move.Scissors && theirMove == Move.Paper) {
-    return 6
+    6
   } else {
-    return 0
+    0
   }
 }
 
