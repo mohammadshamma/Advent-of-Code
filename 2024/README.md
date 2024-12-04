@@ -6,7 +6,7 @@ You can find the puzzles here: https://adventofcode.com/2024
 
 This year, my theme will be using LLMs to write all the code. The goal here is I would not even tweak the code in any other way than changing my instructions to the LLM.
 
-## Friends of mohammadshamma AoC 2022 repos
+## Friends of mohammadshamma AoC 2024 repos
 
 Please send a Pull Request and append yourself to the list below:
 
