@@ -29,3 +29,4 @@ The number of conversation steps required to generate a correct solution will be
 | 7   | 1 + 1 = 2                     | 1 + 1 = 2                        | 1 + 1 = 2                          |
 | 8   | 1 + 1 = 2                     | 3 + 2 = 5                        | 3 + 5 = 8                          |
 | 9   | 5 + 1 = 6                     | 1 + 1 = 2                        | 5 + 16  = 21                       |
+| 10  | TBD                           | TBD                              | 9 + 1 10                           |
